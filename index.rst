@@ -179,7 +179,7 @@ Known issues
 * **Monolithic stack**: Qserv build requires multiple external include files,
   and these are only available by installing full eups packages. For example, using MySQL include file currently require a full eups/MySQL install.
 * **xrootd uses host machine name and ip stack**, so related container must use host's ip stack.
-* **Monolithic xrootd design**: xrootd and cmsd process are strongly tied together, so splitting them in two micro-services is cost-effective.
+* **Monolithic xrootd design**: xrootd and cmsd process are strongly tied together, so splitting them in two micro-services might be cost-prohibitive.
   Nevertheless, xrootd monolithic design ease a lot deployment and system administration.
 * Startup **init.d files launch services in background**, but Docker micro-services philosophy recommend services run in foreground.
 
@@ -212,7 +212,7 @@ Tracks
 Conclusion
 ^^^^^^^^^^
 
-Current Qserv design is very monolithic and going towards micro-services would be very cost-effective.
+Current Qserv design is very monolithic and going towards a full micro-services architecture might be very cost-prohibitive.
 Futhermore, added-value of micro-services is not so easy to understand. Indeed, current architecture allows to deploy same binaries on all nodes and to run only one container
 on each nodes. This eases a lot packaging, compatibility check, and container orchestration.
 Moreover:
@@ -222,7 +222,7 @@ Moreover:
 
 So **splitting all Qserv services in containerized micro-services requires a huge refactoring** and advantages for Qserv architecture are not clear.
 
-**Nevertheless, in the short-term, MySQL could be embedded in a micro-service on both worker and master side.** Use of MySQL system-dependency would reduce Qserv containers size, database configuration and management would be more modular, and current Qserv installation procedure could be improved at moderate cost to support this setup.
+**Nevertheless, in the short-term, MySQL could be embedded in a micro-service on both worker and master side.** Use of MySQL system-dependency would reduce Qserv containers size, database configuration and management would be more modular, and current Qserv installation procedure could be improved at moderate cost to support this setup. Furthermore, this first step would allow Qserv team to acquire comptence and feedback on micro-services.
 
 ****
 
